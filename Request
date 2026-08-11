@@ -1,0 +1,6 @@
+Request
+Path Parameters
+ticker
+string
+required
+Ticker for any given stock
