@@ -1,0 +1,110 @@
+Body
+
+application/json
+
+application/json
+Json response structure for historical house view endpoint.
+
+array of:
+Representative
+string
+required
+Name of Congressperson who made the transaction
+
+BioGuideID
+string
+BioGuide ID of the congressperson who made the transaction
+
+ReportDate
+string<date-time>
+Date the transaction was reported
+
+Date
+string<date-time>
+Date the transaction took place
+
+Ticker
+string
+Ticker of shares transacted
+
+Transaction
+string
+Purchase or Sale
+
+Range
+string
+District
+string
+District of the congressperson
+
+House
+string
+Representatives or Senate
+
+Amount
+string
+Lower bound of transaction size ($). Congressional trades are reported as a range of values, this variable is the lower bound of that range
+
+Default:
+0
+Party
+string
+required
+Political party of the congressperson who made the trade
+
+last_modified
+string<date-time>
+Date that Quiver last updated the details of this transaction
+
+TickerType
+string
+Reported type of asset traded. Note: CS and ST are commonly used as abbreviated for common stock
+
+Description
+string
+Transaction description
+
+ExcessReturn
+number
+Estimated return of stock compared to return of S&P 500 since the transaction date
+
+PriceChange
+number
+Percentage change in stock price since the transaction date
+
+SPYChange
+number
+Percentage change in S&P 500 since the transaction date
+
+Token
+:
+ticker*
+:
+Send API Request
+library(httr)
+
+url <- "https://api.quiverquant.com/beta/historical/housetrading/{ticker}"
+
+response <- VERB("GET", url, add_headers('Authorization' = 'Bearer 123'), content_type("application/octet-stream"), accept("application/json"))
+
+content(response, "text")
+[
+  {
+    "Representative": "string",
+    "BioGuideID": "string",
+    "ReportDate": "2019-08-24T14:15:22Z",
+    "Date": "2019-08-24T14:15:22Z",
+    "Ticker": "string",
+    "Transaction": "string",
+    "Range": "string",
+    "District": "string",
+    "House": "string",
+    "Amount": 0,
+    "Party": "string",
+    "last_modified": "2019-08-24T14:15:22Z",
+    "TickerType": "string",
+    "Description": "string",
+    "ExcessReturn": 0,
+    "PriceChange": 0,
+    "SPYChange": 0
+  }
