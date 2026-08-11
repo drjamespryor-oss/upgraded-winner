@@ -1,0 +1,34 @@
+Body
+
+application/json
+
+application/json
+JSON Response structure for historical gov contracts all endpoint.
+
+array of:
+Ticker
+string
+required
+Company ticker
+
+Date
+string<date-time>
+required
+Announcement date
+
+Description
+string
+Contract description
+
+Agency
+string
+Awarding Agency Name
+
+Amount
+number
+Total dollars obligated under the given contract
+
+action_date
+string<date-time>
+required
+Contract action date
