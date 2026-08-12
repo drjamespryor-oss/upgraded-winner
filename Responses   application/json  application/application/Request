@@ -1,0 +1,66 @@
+Provide your bearer token in the Authorization header when making requests to protected resources.
+
+Example: Authorization: Bearer 123
+
+Path Parameters
+ticker
+string
+required
+Ticker for any given stock
+
+Query Parameters
+date
+string<date>
+Date, formatted as YYYYMMDD
+
+Responses
+Body
+
+application/json
+
+application/json
+responses
+/
+200
+JSON Response structure for historical lobbying endpoint.
+
+array of:
+Ticker
+string
+required
+Company ticker
+
+Date
+string<date-time>
+required
+Date
+
+OTC_Short
+integer
+required
+Number of shares short on the given day
+
+OTC_Total
+integer
+required
+Total number of shares on the given day
+
+DPI
+number
+required
+% of shares short
+
+Token
+:
+ticker*
+:
+date
+:
+Send API Request
+library(httr)
+
+url <- "https://api.quiverquant.com/beta/historical/offexchange/{ticker}"
+
+response <- VERB("GET", url, add_headers('Authorization' = 'Bearer 123'), content_type("application/octet-stream"), accept("application/json"))
+
+content(response, "text")
